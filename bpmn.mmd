@@ -1,0 +1,33 @@
+flowchart TD
+    subgraph ACT[Acteurs]
+        direction LR
+        A1[Participant] ~~~ A2[Cheffe pâtissière] ~~~ A3[Juré]
+    end
+    ACT ~~~ D0
+    D0([Début]) --> T1["Participant<br/>remplit le formulaire<br/>d'inscription en ligne"]
+    T1 --> T2["Inscription enregistrée<br/>dans la base (auto)"]
+    T2 --> S0["Statut : Inscrit"]
+    S0 --> T_CONF["Email de confirmation<br/>envoyé au participant (auto)"]
+    T_CONF --> T_RAPPEL["Email de rappel envoyé<br/>vendredi 4 décembre à 10 h (auto)"]
+    T_RAPPEL --> T4["Participant<br/>remet sa création<br/>le jour J au stand"]
+    T4 --> G2{"Création<br/>bien déposée ?"}
+    G2 -- Non --> T_END["Participant<br/>ne concourt pas"]
+    T_END --> F([Fin])
+    G2 -- Oui --> T5["Cheffe<br/>attribue le N° de création<br/>à la pâtisserie"]
+    T5 --> S2["Statut : Déposé"]
+    S2 --> T6["Juré<br/>se connecte à l'interface<br/>et visualise la liste"]
+    T6 --> T7["Juré<br/>note les 3 critères<br/>Goût, Présentation, Originalité"]
+    T7 --> T8["Calcul du total /30<br/>et de la note /90 (auto)"]
+    T8 --> G3{"3 jurés ont<br/>noté ce participant ?"}
+    G3 -- Non --> T6
+    G3 -- Oui --> S3["Statut : Noté complet"]
+    S3 --> T9["Cheffe<br/>consulte le classement<br/>temps réel en délibération"]
+    T9 --> T10["Cheffe<br/>annonce les lauréats<br/>oralement sur scène"]
+    T10 --> F
+    classDef dec fill:#fff,stroke:#333;
+    classDef st fill:#e8f0fe,stroke:#4a6fd8,color:#1a3fa0;
+    classDef mail fill:#fff8e1,stroke:#c9a200,color:#6b4f00;
+    class G2,G3 dec;
+    class S0,S2,S3 st;
+    class T_CONF,T_RAPPEL mail;
+    style ACT fill:#fff9c4,stroke:#c9b400

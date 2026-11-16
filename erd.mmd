@@ -1,0 +1,40 @@
+erDiagram
+    PARTICIPANT ||--o{ NOTE : "reçoit"
+    JURE ||--o{ NOTE : "attribue"
+
+    PARTICIPANT {
+        id id PK
+        texte numero_creation "champ principal"
+        texte prenom
+        texte nom
+        email email
+        telephone telephone
+        choix categorie "Adultes 16 et plus, Juniors 10 à 15 avec parent"
+        texte_long indice
+        texte_long allergenes
+        date date_inscription
+        choix statut "Inscrit, Déposé, Noté complet"
+        id notes "lien vers NOTE"
+    }
+
+    JURE {
+        id id PK
+        texte nom_complet "champ principal"
+        texte prenom
+        texte nom
+        email email
+        choix role "Chef pâtissière, Client fidèle, Personnalité locale"
+        texte_long bio
+        id notes "lien vers NOTE"
+    }
+
+    NOTE {
+        id id PK
+        texte nom_note "champ principal"
+        id participant_id FK "lien vers PARTICIPANT"
+        id jure_id FK "lien vers JURE"
+        nombre gout
+        nombre presentation
+        nombre originalite
+        date date_notation
+    }

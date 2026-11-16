@@ -1,0 +1,753 @@
+<title>Four du Canal — DA</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Layout: style tile en une colonne, grilles internes pour la palette et les composants. */
+  :root {
+    color-scheme: light;
+    --creme: #FEF6F0;
+    --lin: #F5E8DA;
+    --encre: #2E1A12;
+    --chocolat: #3D2814;
+    --brun: #7A5D45;
+    --pistache: #A5C293;
+    --framboise: #E86B7F;
+    --framboise-dark: #D04E64;
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background: var(--creme);
+    color: var(--chocolat);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+    padding-block: 72px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  header.tile-header {
+    border-bottom: 1px solid var(--lin);
+    padding-bottom: 40px;
+    margin-bottom: 72px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pistache);
+    margin-bottom: 16px;
+  }
+
+  .tile-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 500;
+    line-height: 1.05;
+    text-wrap: balance;
+    margin: 0 0 20px;
+    font-variation-settings: "opsz" 56, "SOFT" 30;
+    letter-spacing: -0.01em;
+  }
+
+  .tile-title em {
+    font-style: italic;
+    color: var(--framboise);
+  }
+
+  .tile-sub {
+    color: var(--brun);
+    max-width: 560px;
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  section {
+    margin-bottom: 72px;
+    min-width: 0;
+  }
+
+  .section-rule {
+    width: 64px;
+    height: 1px;
+    background: var(--pistache);
+    margin-bottom: 20px;
+  }
+
+  .section-rule.pop {
+    background: var(--framboise);
+    height: 2px;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0 0 28px;
+    font-variation-settings: "opsz" 40, "SOFT" 20;
+    letter-spacing: -0.01em;
+  }
+
+  /* Palette */
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 20px;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .swatch-color {
+    aspect-ratio: 1.3 / 1;
+    border-radius: 6px;
+    border: 1px solid rgba(46, 31, 20, 0.06);
+    max-width: 100%;
+  }
+
+  .swatch-info {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .swatch-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--chocolat);
+    font-variation-settings: "opsz" 24;
+  }
+
+  .swatch-hex {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 12px;
+    color: var(--brun);
+    letter-spacing: 0.04em;
+  }
+
+  .swatch-use {
+    font-size: 13px;
+    color: var(--brun);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* Typographie */
+  .typo-grid {
+    display: grid;
+    gap: 36px;
+  }
+
+  .typo-sample {
+    padding-top: 28px;
+    border-top: 1px solid var(--lin);
+    min-width: 0;
+  }
+
+  .typo-sample:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .typo-meta {
+    font-size: 11px;
+    color: var(--brun);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  .typo-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
+    font-weight: 500;
+    margin: 0;
+    font-variation-settings: "opsz" 48, "SOFT" 20;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .typo-h1 em {
+    font-style: italic;
+    color: var(--framboise);
+  }
+
+  .typo-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3.5vw, 32px);
+    line-height: 1.1;
+    font-weight: 500;
+    margin: 0;
+    font-variation-settings: "opsz" 32, "SOFT" 20;
+  }
+
+  .typo-h3 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+    color: var(--brun);
+    font-variation-settings: "opsz" 24;
+  }
+
+  .typo-body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .typo-body em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-variation-settings: "opsz" 24;
+  }
+
+  .highlight-rose {
+    background: linear-gradient(to top, var(--framboise) 0, var(--framboise) 32%, transparent 32%);
+    padding: 0 2px;
+  }
+
+  .typo-cta {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--framboise);
+  }
+
+  /* Composants */
+  .components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .component-box {
+    background: var(--lin);
+    padding: 32px 28px 28px;
+    border-radius: 6px;
+    min-width: 0;
+    position: relative;
+  }
+
+  .component-box::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 32px;
+    height: 1px;
+    background: var(--pistache);
+  }
+
+  .component-label {
+    font-size: 11px;
+    color: var(--brun);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--framboise);
+    color: var(--creme);
+    padding: 14px 26px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-body);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    background: var(--framboise-dark);
+    transform: translateY(-1px);
+    outline: none;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--chocolat);
+    padding: 13px 25px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    border: 1px solid var(--chocolat);
+    font-family: var(--font-body);
+    transition: background 0.15s ease;
+  }
+
+  .btn-secondary:hover,
+  .btn-secondary:focus-visible {
+    background: var(--creme);
+    outline: none;
+  }
+
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .form-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--chocolat);
+    display: block;
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 24, "SOFT" 50;
+    font-weight: 500;
+  }
+
+  .form-input {
+    width: 100%;
+    background: var(--creme);
+    border: 1px solid var(--lin);
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-family: var(--font-body);
+    color: var(--chocolat);
+    box-sizing: border-box;
+    transition: border-color 0.15s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--pistache);
+    border-width: 1.5px;
+    padding: 13.5px 15.5px;
+  }
+
+  .picto-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .picto {
+    width: 44px;
+    height: 44px;
+    color: var(--pistache);
+    max-width: 100%;
+  }
+
+  .tampon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1.5px solid var(--pistache);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--pistache);
+    background: var(--creme);
+    font-variation-settings: "opsz" 24;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .tampon::after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--framboise);
+  }
+
+  /* Aperçu hero */
+  .hero-preview {
+    background: var(--creme);
+    border: 1px solid var(--lin);
+    border-radius: 6px;
+    padding: 56px 40px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .hero-preview-text {
+    min-width: 0;
+  }
+
+  .hero-preview h1 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.05;
+    font-weight: 500;
+    margin: 0 0 18px;
+    font-variation-settings: "opsz" 48, "SOFT" 20;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .hero-preview h1 em {
+    font-style: italic;
+    color: var(--framboise);
+  }
+
+  .hero-preview p {
+    color: var(--brun);
+    margin: 0 0 28px;
+    max-width: 48ch;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-preview .meta-line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .hero-preview .meta-line .rule {
+    width: 32px;
+    height: 2px;
+    background: var(--framboise);
+  }
+
+  .hero-preview .meta-line .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--pistache);
+    font-weight: 500;
+  }
+
+  .hero-preview .meta-line .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--framboise);
+    display: inline-block;
+  }
+
+  .hero-preview-visual {
+    aspect-ratio: 1 / 1;
+    background: var(--lin);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 100%;
+  }
+
+  .hero-preview-visual svg {
+    width: 78%;
+    height: 78%;
+  }
+
+  .hero-preview-visual .caption {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    font-size: 11px;
+    color: var(--brun);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Anti-brief */
+  .rules {
+    background: var(--encre);
+    color: var(--creme);
+    padding: 40px 32px;
+    border-radius: 6px;
+  }
+
+  .rules h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 0 20px;
+    color: var(--creme);
+    font-variation-settings: "opsz" 24, "SOFT" 20;
+    font-style: italic;
+  }
+
+  .rules ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px 20px;
+  }
+
+  .rules li {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #D8CFBE;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .rules li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--framboise);
+  }
+
+  @media (max-width: 640px) {
+    .hero-preview {
+      grid-template-columns: 1fr;
+      padding: 36px 24px;
+    }
+    body {
+      padding-block: 48px;
+    }
+  }
+</style>
+
+<div class="page">
+  <header class="tile-header">
+    <div class="eyebrow">Direction artistique · Piste F</div>
+    <h1 class="tile-title">Pop pâtissier, <em>signé</em>.</h1>
+    <p class="tile-sub">Style tile pour le concours amateur du Four du Canal, samedi 5 décembre à Bidart. Palette chaude framboise et pistache, typo Fraunces italique, détails gourmands tracés main.</p>
+  </header>
+
+  <section>
+    <div class="section-rule"></div>
+    <h2>Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FEF6F0"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Crème rosée</span>
+          <span class="swatch-hex">#FEF6F0</span>
+          <span class="swatch-use">Fond principal</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5E8DA"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Lin rosé</span>
+          <span class="swatch-hex">#F5E8DA</span>
+          <span class="swatch-use">Cards, blocs secondaires</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2E1A12"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Chocolat foncé</span>
+          <span class="swatch-hex">#2E1A12</span>
+          <span class="swatch-use">Footer, blocs contrastés</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3D2814"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Chocolat chaud</span>
+          <span class="swatch-hex">#3D2814</span>
+          <span class="swatch-use">Texte principal</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#7A5D45"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Brun chocolat atténué</span>
+          <span class="swatch-hex">#7A5D45</span>
+          <span class="swatch-use">Texte secondaire, légendes</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#A5C293"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Pistache</span>
+          <span class="swatch-hex">#A5C293</span>
+          <span class="swatch-use">Détails, filets, pictos, petits points</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E86B7F"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Framboise</span>
+          <span class="swatch-hex">#E86B7F</span>
+          <span class="swatch-use">CTA, liens, touches pop gourmandes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-rule pop"></div>
+    <h2>Typographie</h2>
+    <div class="typo-grid">
+      <div class="typo-sample">
+        <div class="typo-meta">Fraunces · Titre hero · 48px, 500, italique sur le mot-clé</div>
+        <div class="typo-h1">Votre pâtisserie mérite d'être <em>goûtée</em></div>
+      </div>
+      <div class="typo-sample">
+        <div class="typo-meta">Fraunces · Titre de section · 32px, 500</div>
+        <div class="typo-h2">Trois choses à savoir avant de vous lancer</div>
+      </div>
+      <div class="typo-sample">
+        <div class="typo-meta">Fraunces italic · Sous-titre · 22px, 400</div>
+        <div class="typo-h3">Le déroulé de la journée</div>
+      </div>
+      <div class="typo-sample">
+        <div class="typo-meta">Inter · Corps · 17px, 1.6, italiques Fraunces sur quelques mots</div>
+        <p class="typo-body">Le Four du Canal lance son premier concours <em>amateur</em>, <span class="highlight-rose">samedi 5 décembre</span> à Bidart. Jury gourmand, lots à gagner, pas besoin d'être pro. Inscription gratuite en deux minutes, rendez-vous rue du Canal pour un après-midi <em>convivial</em>.</p>
+      </div>
+      <div class="typo-sample">
+        <div class="typo-meta">Inter · CTA · 15px, 500, letter-spacing 0.02em, bas-de-casse</div>
+        <div class="typo-cta">je m'inscris</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-rule"></div>
+    <h2>Composants</h2>
+    <div class="components">
+      <div class="component-box">
+        <div class="component-label">Boutons</div>
+        <div class="btn-row">
+          <button class="btn-primary" type="button">Je m'inscris</button>
+          <button class="btn-secondary" type="button">Voir le règlement</button>
+        </div>
+      </div>
+
+      <div class="component-box">
+        <div class="component-label">Champ de formulaire</div>
+        <label class="form-label" for="demo-field">Votre prénom</label>
+        <input id="demo-field" class="form-input" type="text" placeholder="Clara" />
+      </div>
+
+      <div class="component-box">
+        <div class="component-label">Tampon monogramme</div>
+        <div class="tampon" aria-label="Four du Canal">F.C.</div>
+      </div>
+
+      <div class="component-box">
+        <div class="component-label">Pictos · line art sauge</div>
+        <div class="picto-row">
+          <svg class="picto" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Dépôt de la création">
+            <rect x="8" y="16" width="32" height="24" rx="2"/>
+            <path d="M8 16l5-8h22l5 8"/>
+            <path d="M20 26h8"/>
+          </svg>
+          <svg class="picto" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Dégustation du jury">
+            <circle cx="24" cy="26" r="10"/>
+            <path d="M14 26h20"/>
+            <path d="M24 16v-6"/>
+            <path d="M19 10h10"/>
+          </svg>
+          <svg class="picto" viewBox="0 0 48 48" fill="none" stroke="#E86B7F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Remise des prix">
+            <path d="M24 10l3.5 7 7.5 1-5.5 5.5 1.5 7.5L24 27.5 17 31l1.5-7.5L13 18l7.5-1L24 10z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-rule pop"></div>
+    <h2>Aperçu hero</h2>
+    <div class="hero-preview">
+      <div class="hero-preview-text">
+        <div class="meta-line">
+          <span class="rule"></span>
+          <span class="label">Samedi 5 décembre · Bidart</span>
+        </div>
+        <h1>Votre pâtisserie mérite d'être <em>goûtée</em></h1>
+        <p>Le Four du Canal lance son premier concours amateur, samedi 5 décembre à Bidart. Jury gourmand, lots à gagner, pas besoin d'être pro. Inscription gratuite en 2 minutes.</p>
+        <button class="btn-primary" type="button">Je m'inscris</button>
+      </div>
+      <div class="hero-preview-visual" aria-label="Illustration pâtissière du concours">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M18 22 L19.5 25 L22.5 25.5 L20 27.5 L21 30.5 L18 29 L15 30.5 L16 27.5 L13.5 25.5 L16.5 25 Z" fill="#E86B7F"/>
+          <g transform="translate(100, 18)"><path d="M0 -3 L1 -1 L3 -0.5 L1.2 1 L1.8 3 L0 2 L-1.8 3 L-1.2 1 L-3 -0.5 L-1 -1 Z" fill="#A5C293"/></g>
+          <circle cx="22" cy="56" r="1.8" fill="#E86B7F"/>
+          <circle cx="98" cy="62" r="1.5" fill="#A5C293"/>
+          <path d="M100 48 Q102 46 104 48 Q102 50 100 48 Z" fill="#E86B7F"/>
+          <circle cx="16" cy="92" r="1.2" fill="#E86B7F"/>
+          <circle cx="22" cy="95" r="1.6" fill="#A5C293"/>
+          <path d="M103 95 L105 92 L107 95 L105 98 Z" fill="#A5C293"/>
+          <ellipse cx="60" cy="110" rx="34" ry="3.2" fill="#A5C293"/>
+          <path d="M54 100 L50 107 L70 107 L66 100 Z" fill="#A5C293"/>
+          <rect x="52" y="98" width="16" height="3" rx="1.5" fill="#A5C293"/>
+          <rect x="30" y="75" width="60" height="25" rx="3" fill="#FEF6F0" stroke="#3D2814" stroke-width="1.5"/>
+          <path d="M30 82 Q36 80 42 82 T54 82 T66 82 T78 82 T86 82 L90 82" fill="none" stroke="#E86B7F" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="40" cy="91" r="1.3" fill="#E86B7F"/>
+          <circle cx="52" cy="93" r="1.3" fill="#A5C293"/>
+          <circle cx="64" cy="91" r="1.3" fill="#E86B7F"/>
+          <circle cx="76" cy="93" r="1.3" fill="#A5C293"/>
+          <rect x="40" y="52" width="40" height="23" rx="3" fill="#F5E8DA" stroke="#3D2814" stroke-width="1.5"/>
+          <path d="M40 59 Q46 57 52 59 T64 59 T76 59 L80 59" fill="none" stroke="#A5C293" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="50" cy="68" r="1.2" fill="#E86B7F"/>
+          <circle cx="60" cy="70" r="1.2" fill="#A5C293"/>
+          <circle cx="70" cy="68" r="1.2" fill="#E86B7F"/>
+          <rect x="48" y="32" width="24" height="20" rx="2.5" fill="#FEF6F0" stroke="#3D2814" stroke-width="1.5"/>
+          <path d="M48 39 Q54 37 60 39 Q66 41 72 39" fill="none" stroke="#E86B7F" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="60" cy="27" r="4.5" fill="#E86B7F" stroke="#3D2814" stroke-width="1.5"/>
+          <circle cx="58.5" cy="25.5" r="1.3" fill="#FEF6F0" opacity="0.7"/>
+          <path d="M60 22.5 Q63 18 67 15" fill="none" stroke="#3D2814" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M67 15 Q70 13 72 16 Q70 18 67 15 Z" fill="#A5C293"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-rule"></div>
+    <h2>Ce qu'on ne fait pas</h2>
+    <div class="rules">
+      <h3>Anti-brief</h3>
+      <ul>
+        <li>Pas de dégradé moderne, pas de glassmorphism, pas de 3D</li>
+        <li>Pas de typo manuscrite fake, uniquement une vraie signature si besoin</li>
+        <li>Pas de rouge agressif ni de palette "fête"</li>
+        <li>Pas d'emoji dans les CTA, les titres, les boutons</li>
+        <li>Pas de cliparts de chefs ou de toques</li>
+        <li>Pas de cocarde "concours" ni de confettis</li>
+        <li>Pas de référence folklorique au Pays Basque</li>
+        <li>Pas de noir pur ni de blanc pur sur la landing</li>
+      </ul>
+    </div>
+  </section>
+</div>

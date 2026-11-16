@@ -1,0 +1,1328 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Premier concours amateur de pâtisserie du Four du Canal, samedi 6 décembre 2026 à Bidart. Inscription gratuite, jury gourmand, lots à gagner.">
+  <title>Concours amateur de pâtisserie · Le Four du Canal · Bidart · 6 décembre 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+  <style>
+    /* ============================================================
+       Le Four du Canal — Landing refonte "Soleil d'hiver basque"
+       Un seul fond crème abricot sur toute la page (hors footer).
+       Structure variée section par section, pas d'alternance de blocs.
+       Sélecteurs préfixés .fdc- pour portabilité WordPress.
+       ============================================================ */
+
+    .fdc-root {
+      --fdc-cream: #FAEDE0;
+      --fdc-white: #FFF8F0;
+      --fdc-terracotta: #D97B52;
+      --fdc-terracotta-dark: #B85D34;
+      --fdc-rose: #E89273;
+      --fdc-jaune: #D9A838;
+      --fdc-vert: #A8C298;
+      --fdc-encre: #1F2E3F;
+      --fdc-encre-soft: #4A5564;
+      --fdc-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      --fdc-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+      background: var(--fdc-cream);
+      color: var(--fdc-encre);
+      font-family: var(--fdc-sans);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .fdc-root *,
+    .fdc-root *::before,
+    .fdc-root *::after { box-sizing: border-box; }
+
+    .fdc-root img { max-width: 100%; height: auto; display: block; }
+
+    .fdc-root a {
+      color: var(--fdc-terracotta);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      transition: color .2s ease;
+    }
+
+    .fdc-root a:hover,
+    .fdc-root a:focus-visible {
+      color: var(--fdc-terracotta-dark);
+    }
+
+    .fdc-root :focus-visible {
+      outline: 2px solid var(--fdc-terracotta);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    .fdc-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-left: max(24px, env(safe-area-inset-left, 0px));
+      padding-right: max(24px, env(safe-area-inset-right, 0px));
+      position: relative;
+    }
+
+    /* -------- Typo pivots -------- */
+
+    .fdc-serif { font-family: var(--fdc-serif); }
+    .fdc-italic { font-style: italic; }
+
+    .fdc-eyebrow {
+      font-family: var(--fdc-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fdc-terracotta);
+    }
+
+    .fdc-h1 {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(56px, 11vw, 140px);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--fdc-encre);
+      text-wrap: balance;
+    }
+
+    .fdc-h2 {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(40px, 6.5vw, 76px);
+      line-height: 1;
+      letter-spacing: -0.015em;
+      margin: 0;
+      color: var(--fdc-encre);
+      text-wrap: balance;
+    }
+
+    .fdc-h3 {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.1;
+      margin: 0;
+      color: var(--fdc-encre);
+    }
+
+    .fdc-lede {
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.55;
+      color: var(--fdc-encre-soft);
+      max-width: 48ch;
+    }
+
+    .fdc-text { font-size: 17px; line-height: 1.6; color: var(--fdc-encre-soft); margin: 0; }
+    .fdc-text strong { font-weight: 600; color: var(--fdc-encre); }
+
+    /* -------- Boutons -------- */
+
+    .fdc-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--fdc-terracotta);
+      color: var(--fdc-white);
+      padding: 18px 32px;
+      border-radius: 999px;
+      font-family: var(--fdc-sans);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .fdc-cta:hover,
+    .fdc-cta:focus-visible {
+      background: var(--fdc-terracotta-dark);
+      color: var(--fdc-white);
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .fdc-cta-arrow {
+      display: inline-block;
+      transition: transform .2s ease;
+    }
+
+    .fdc-cta:hover .fdc-cta-arrow { transform: translateX(4px); }
+
+    /* -------- Badges ronds -------- */
+
+    .fdc-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--fdc-sans);
+    }
+
+    .fdc-badge-vert { background: var(--fdc-vert); color: var(--fdc-encre); }
+    .fdc-badge-jaune { background: var(--fdc-jaune); color: var(--fdc-encre); }
+    .fdc-badge-rose { background: var(--fdc-rose); color: var(--fdc-white); }
+    .fdc-badge-terra { background: var(--fdc-terracotta); color: var(--fdc-white); }
+
+    /* -------- Tampon -------- */
+
+    .fdc-tampon {
+      width: 68px; height: 68px;
+      border-radius: 50%;
+      border: 1.5px solid var(--fdc-encre);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--fdc-encre);
+      background: transparent;
+      letter-spacing: 0.01em;
+      flex-shrink: 0;
+      transform: rotate(-6deg);
+      transition: transform .3s ease;
+    }
+
+    .fdc-tampon:hover { transform: rotate(0deg) scale(1.05); }
+
+    /* ============================================================
+       HERO — soleil en arrière-plan + titre géant + vague
+       ============================================================ */
+
+    .fdc-hero {
+      position: relative;
+      padding-block: 80px 0;
+      overflow: hidden;
+    }
+
+    .fdc-sun {
+      position: absolute;
+      top: -14%;
+      right: -8%;
+      width: 72vw;
+      max-width: 820px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--fdc-rose) 0%, var(--fdc-terracotta) 55%, transparent 72%);
+      opacity: 0.38;
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .fdc-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-block: 60px 100px;
+    }
+
+    .fdc-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .fdc-hero-eyebrow::before,
+    .fdc-hero-eyebrow::after {
+      content: "";
+      width: 28px;
+      height: 1.5px;
+      background: var(--fdc-terracotta);
+    }
+
+    .fdc-hero-title {
+      max-width: 14ch;
+      margin-bottom: 40px;
+    }
+
+    .fdc-hero-title em {
+      font-style: italic;
+      color: var(--fdc-terracotta);
+      position: relative;
+    }
+
+    .fdc-hero-title em::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -4px;
+      height: 10px;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M 2 7 Q 25 1 50 5 T 100 5 T 150 5 T 198 5' fill='none' stroke='%23D9A838' stroke-width='2.5' stroke-linecap='round'/></svg>") center / 100% 100% no-repeat;
+    }
+
+    .fdc-hero-lede { margin-bottom: 48px; max-width: 46ch; }
+
+    .fdc-hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .fdc-hero-asterisk {
+      position: absolute;
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      color: var(--fdc-jaune);
+      line-height: 1;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .fdc-hero-asterisk-1 { top: 12%; left: 3%; font-size: 80px; transform: rotate(-12deg); }
+    .fdc-hero-asterisk-2 { bottom: 30%; right: 8%; font-size: 48px; transform: rotate(18deg); color: var(--fdc-vert); }
+
+    .fdc-wave {
+      display: block;
+      width: 100%;
+      height: 60px;
+    }
+
+    /* ============================================================
+       SECTIONS génériques — toutes sur le même fond crème abricot
+       Pas de section-alt. On varie la structure, pas la couleur.
+       ============================================================ */
+
+    .fdc-section {
+      position: relative;
+      padding-block: 110px;
+    }
+
+    @media (max-width: 760px) { .fdc-section { padding-block: 72px; } }
+
+    .fdc-section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 64px;
+      flex-wrap: wrap;
+    }
+
+    .fdc-section-num {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--fdc-terracotta);
+      font-weight: 400;
+    }
+
+    /* ============================================================
+       3 POINTS — liste numérotée avec chiffres géants, pas de cards
+       ============================================================ */
+
+    .fdc-points-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .fdc-point-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      align-items: start;
+      padding-block: 48px;
+      border-top: 1.5px solid rgba(31, 46, 63, 0.12);
+    }
+
+    .fdc-point-row:first-child { border-top: none; padding-top: 0; }
+    .fdc-point-row:last-child { padding-bottom: 0; }
+
+    .fdc-point-num {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: clamp(80px, 11vw, 150px);
+      line-height: 0.85;
+      color: var(--fdc-jaune);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+    }
+
+    .fdc-point-content h3 {
+      margin-bottom: 14px;
+    }
+
+    .fdc-point-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 760px) {
+      .fdc-point-row { grid-template-columns: 1fr; gap: 12px; padding-block: 36px; }
+      .fdc-point-num { font-size: 72px; }
+    }
+
+    /* ============================================================
+       DÉROULÉ — timeline horizontale avec fil
+       ============================================================ */
+
+    .fdc-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .fdc-timeline::before {
+      content: "";
+      position: absolute;
+      top: 24px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: repeating-linear-gradient(to right, var(--fdc-vert) 0 8px, transparent 8px 16px);
+    }
+
+    .fdc-timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fdc-timeline-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--fdc-cream);
+      border: 2px solid var(--fdc-vert);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .fdc-timeline-dot svg { width: 22px; height: 22px; stroke: var(--fdc-encre); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .fdc-timeline-dot.fdc-highlight { background: var(--fdc-jaune); border-color: var(--fdc-jaune); }
+
+    .fdc-timeline-time {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 24px;
+      color: var(--fdc-terracotta);
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
+    .fdc-timeline-title {
+      font-family: var(--fdc-sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+      color: var(--fdc-encre);
+    }
+
+    .fdc-timeline-text {
+      font-size: 13.5px;
+      color: var(--fdc-encre-soft);
+      max-width: 22ch;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 860px) {
+      .fdc-timeline { grid-template-columns: 1fr; gap: 36px; }
+      .fdc-timeline::before { display: none; }
+      .fdc-timeline-step { flex-direction: row; text-align: left; gap: 20px; align-items: flex-start; }
+      .fdc-timeline-dot { margin-bottom: 0; flex-shrink: 0; }
+      .fdc-timeline-content { flex: 1; min-width: 0; }
+      .fdc-timeline-text { max-width: none; }
+    }
+
+    /* ============================================================
+       PARTICIPER — deux colonnes libres, badges flottants
+       ============================================================ */
+
+    .fdc-participer {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .fdc-participer { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    .fdc-participer-left h3 { margin-bottom: 20px; }
+
+    .fdc-participer-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .fdc-rules {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+    }
+
+    .fdc-rules li {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 16px;
+      padding-block: 18px;
+      border-top: 1.5px solid rgba(31, 46, 63, 0.12);
+      font-size: 16px;
+      color: var(--fdc-encre-soft);
+      line-height: 1.55;
+    }
+
+    .fdc-rules li:first-child { border-top: none; padding-top: 0; }
+
+    .fdc-rules-num {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--fdc-terracotta);
+      line-height: 1;
+    }
+
+    /* ============================================================
+       LOTS — grille asymétrique
+       ============================================================ */
+
+    .fdc-lots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 760px) {
+      .fdc-lots { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    .fdc-lots-col.fdc-juniors { margin-top: 56px; }
+
+    @media (max-width: 760px) {
+      .fdc-lots-col.fdc-juniors { margin-top: 0; }
+    }
+
+    .fdc-lots-cat {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 28px;
+      color: var(--fdc-encre);
+      margin: 0 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .fdc-lots-cat-badge {
+      display: inline-flex;
+      font-family: var(--fdc-sans);
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--fdc-white);
+      border: 1.5px solid var(--fdc-encre);
+      color: var(--fdc-encre);
+    }
+
+    .fdc-prix-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .fdc-prix {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+      padding-block: 22px;
+      border-top: 1.5px dotted rgba(31, 46, 63, 0.2);
+    }
+
+    .fdc-prix:first-child { border-top: none; padding-top: 0; }
+
+    .fdc-prix-rank {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 36px;
+      color: var(--fdc-terracotta);
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .fdc-prix-text {
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: var(--fdc-encre-soft);
+    }
+
+    .fdc-lots-note {
+      grid-column: 1 / -1;
+      background: var(--fdc-vert);
+      padding: 36px 40px;
+      border-radius: 20px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .fdc-lots-note-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--fdc-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 28px;
+      color: var(--fdc-terracotta);
+    }
+
+    .fdc-lots-note-text { flex: 1; min-width: 200px; }
+    .fdc-lots-note-text h4 {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 22px;
+      margin: 0 0 6px;
+      color: var(--fdc-encre);
+    }
+    .fdc-lots-note-text p { margin: 0; font-size: 15px; color: var(--fdc-encre); opacity: 0.85; }
+
+    /* ============================================================
+       JURY — citation éditoriale
+       ============================================================ */
+
+    .fdc-quote {
+      position: relative;
+      padding: 0 0 0 80px;
+      max-width: 820px;
+      margin: 0 auto 72px;
+    }
+
+    .fdc-quote::before {
+      content: "“";
+      position: absolute;
+      left: 0;
+      top: -40px;
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 180px;
+      color: var(--fdc-terracotta);
+      line-height: 1;
+    }
+
+    .fdc-quote p {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: clamp(26px, 3.2vw, 38px);
+      line-height: 1.25;
+      color: var(--fdc-encre);
+      margin: 0 0 20px;
+      text-wrap: balance;
+    }
+
+    .fdc-quote cite {
+      font-family: var(--fdc-sans);
+      font-style: normal;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fdc-terracotta);
+    }
+
+    @media (max-width: 760px) {
+      .fdc-quote { padding-left: 0; padding-top: 72px; }
+      .fdc-quote::before { top: -20px; font-size: 140px; }
+    }
+
+    .fdc-jury-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      margin-top: 64px;
+    }
+
+    .fdc-jure {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .fdc-jure-tag {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--fdc-white);
+      border: 1.5px solid var(--fdc-encre);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fdc-encre);
+      margin-bottom: 4px;
+    }
+
+    .fdc-jure strong {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--fdc-encre);
+      font-weight: 400;
+    }
+
+    .fdc-jure p { font-size: 15px; color: var(--fdc-encre-soft); margin: 0; }
+
+    .fdc-criteres {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      margin-top: 72px;
+      padding-top: 56px;
+      border-top: 1.5px solid rgba(31, 46, 63, 0.12);
+    }
+
+    .fdc-critere-num {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 56px;
+      color: var(--fdc-jaune);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .fdc-critere-name {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 26px;
+      color: var(--fdc-encre);
+      margin-bottom: 8px;
+    }
+
+    .fdc-critere-text { font-size: 14px; color: var(--fdc-encre-soft); }
+
+    /* ============================================================
+       FAQ — accordéon sans box
+       ============================================================ */
+
+    .fdc-faq { max-width: 820px; }
+
+    .fdc-faq details {
+      border-top: 1.5px solid rgba(31, 46, 63, 0.15);
+      padding-block: 28px;
+    }
+
+    .fdc-faq details:last-of-type { border-bottom: 1.5px solid rgba(31, 46, 63, 0.15); }
+
+    .fdc-faq summary {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: clamp(22px, 2.6vw, 30px);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      color: var(--fdc-encre);
+      line-height: 1.2;
+    }
+
+    .fdc-faq summary::-webkit-details-marker { display: none; }
+
+    .fdc-faq summary::after {
+      content: "+";
+      font-family: var(--fdc-sans);
+      font-size: 36px;
+      color: var(--fdc-terracotta);
+      line-height: 1;
+      transition: transform .25s ease;
+      flex-shrink: 0;
+      font-weight: 300;
+    }
+
+    .fdc-faq details[open] summary::after { content: "−"; }
+
+    .fdc-faq-answer {
+      margin: 20px 0 0;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--fdc-encre-soft);
+      max-width: 62ch;
+    }
+
+    /* ============================================================
+       FORMULAIRE — hero secondaire avec soleil couchant
+       ============================================================ */
+
+    .fdc-form {
+      position: relative;
+      padding-block: 110px;
+      overflow: hidden;
+    }
+
+    .fdc-form-sun {
+      position: absolute;
+      bottom: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90vw;
+      max-width: 900px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--fdc-jaune) 0%, transparent 65%);
+      opacity: 0.25;
+      filter: blur(40px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .fdc-form-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .fdc-form-lede {
+      margin: 24px auto 48px;
+      max-width: 56ch;
+      text-align: center;
+    }
+
+    .fdc-form-embed {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--fdc-white);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 60px -20px rgba(31, 46, 63, 0.18);
+    }
+
+    .fdc-form-embed iframe {
+      width: 100%;
+      min-height: 720px;
+      border: none;
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* ============================================================
+       FOOTER — seule section à fond contrasté (bleu encre)
+       ============================================================ */
+
+    .fdc-footer {
+      position: relative;
+      background: var(--fdc-encre);
+      color: var(--fdc-cream);
+      padding-block: 80px 48px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+
+    .fdc-footer-moon {
+      position: absolute;
+      bottom: -55%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140%;
+      max-width: 1600px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 123, 82, 0.5) 0%, transparent 60%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .fdc-footer-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .fdc-footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1.5px solid rgba(250, 237, 224, 0.18);
+    }
+
+    @media (max-width: 760px) {
+      .fdc-footer-top { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .fdc-footer-brand {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .fdc-footer-tampon {
+      border-color: var(--fdc-cream);
+      color: var(--fdc-cream);
+    }
+
+    .fdc-footer-brand h3 {
+      font-family: var(--fdc-serif);
+      font-style: italic;
+      font-size: 30px;
+      margin: 0 0 10px;
+      color: var(--fdc-cream);
+      font-weight: 400;
+    }
+
+    .fdc-footer-brand p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(250, 237, 224, 0.75);
+    }
+
+    .fdc-footer-brand a { color: inherit; }
+
+    .fdc-footer-col h4 {
+      font-family: var(--fdc-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fdc-jaune);
+      margin: 0 0 16px;
+    }
+
+    .fdc-footer-col p,
+    .fdc-footer-col ul {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(250, 237, 224, 0.75);
+      margin: 0;
+    }
+
+    .fdc-footer-col ul { list-style: none; padding: 0; }
+    .fdc-footer-col li { margin-bottom: 6px; }
+    .fdc-footer-col a {
+      color: rgba(250, 237, 224, 0.85);
+      text-decoration: none;
+    }
+    .fdc-footer-col a:hover { color: var(--fdc-cream); text-decoration: underline; }
+
+    .fdc-footer-bottom {
+      padding-top: 32px;
+      font-size: 13px;
+      color: rgba(250, 237, 224, 0.55);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    /* -------- Reduced motion -------- */
+
+    @media (prefers-reduced-motion: reduce) {
+      .fdc-root *, .fdc-root *::before, .fdc-root *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="fdc-root">
+
+  <!-- ============================= HERO ============================= -->
+  <header class="fdc-hero">
+    <div class="fdc-sun" aria-hidden="true"></div>
+    <span class="fdc-hero-asterisk fdc-hero-asterisk-1" aria-hidden="true">✺</span>
+    <span class="fdc-hero-asterisk fdc-hero-asterisk-2" aria-hidden="true">✺</span>
+
+    <div class="fdc-container fdc-hero-inner">
+      <div class="fdc-hero-eyebrow">
+        <span class="fdc-eyebrow">Samedi 6 décembre · Bidart</span>
+      </div>
+
+      <h1 class="fdc-h1 fdc-hero-title">
+        Votre pâtisserie<br>mérite d'être <em>goûtée</em>
+      </h1>
+
+      <p class="fdc-lede fdc-hero-lede">
+        Le Four du Canal lance son tout premier concours amateur de pâtisserie. Jury gourmand, lots à gagner, pas besoin d'être pro. Inscription gratuite en deux minutes.
+      </p>
+
+      <div class="fdc-hero-cta-row">
+        <a class="fdc-cta" href="#inscription">
+          Je m'inscris
+          <span class="fdc-cta-arrow" aria-hidden="true">→</span>
+        </a>
+        <span class="fdc-tampon" aria-label="Monogramme Le Four du Canal">F.C.</span>
+      </div>
+    </div>
+
+    <svg class="fdc-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 Q 180 0 360 30 T 720 30 T 1080 30 T 1440 30 L 1440 60 L 0 60 Z" fill="#E89273" opacity="0.18"/>
+    </svg>
+  </header>
+
+  <!-- ============================= 3 POINTS ============================= -->
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-section-head">
+        <span class="fdc-section-num">Section 01</span>
+        <h2 class="fdc-h2">Trois choses à savoir avant de vous lancer</h2>
+      </div>
+
+      <div class="fdc-points-list">
+        <article class="fdc-point-row">
+          <div class="fdc-point-num">01</div>
+          <div class="fdc-point-content">
+            <h3 class="fdc-h3">Samedi 6 décembre, de 14h à 18h</h3>
+            <p class="fdc-text">Dans la boutique du Four du Canal, rue du Canal à Bidart. Entrée libre pour le public tout l'après-midi.</p>
+          </div>
+        </article>
+
+        <article class="fdc-point-row">
+          <div class="fdc-point-num">02</div>
+          <div class="fdc-point-content">
+            <h3 class="fdc-h3">Pâtisserie de fin d'année</h3>
+            <p class="fdc-text">Libre dans la recette, libre dans l'inspiration. Format pour 6 personnes minimum, ou 6 pièces individuelles. On vous laisse carte blanche.</p>
+          </div>
+        </article>
+
+        <article class="fdc-point-row">
+          <div class="fdc-point-num">03</div>
+          <div class="fdc-point-content">
+            <h3 class="fdc-h3">Deux catégories, mêmes égards</h3>
+            <p class="fdc-text">Chaque catégorie a son propre classement, son propre jury et ses propres lots.</p>
+            <ul>
+              <li><span class="fdc-badge fdc-badge-jaune">Adultes · 16 ans et +</span></li>
+              <li><span class="fdc-badge fdc-badge-vert">Juniors · 10 à 15 ans</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= DÉROULÉ ============================= -->
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-section-head">
+        <span class="fdc-section-num">Section 02</span>
+        <h2 class="fdc-h2">Le déroulé de la journée</h2>
+      </div>
+
+      <div class="fdc-timeline">
+        <div class="fdc-timeline-step">
+          <div class="fdc-timeline-dot">
+            <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M4 8l2.5-4h11L20 8"/></svg>
+          </div>
+          <div class="fdc-timeline-content">
+            <div class="fdc-timeline-time">10h — 12h</div>
+            <div class="fdc-timeline-title">Dépôt</div>
+            <p class="fdc-timeline-text">Vous apportez votre création avec la liste des allergènes. On vous remet votre numéro.</p>
+          </div>
+        </div>
+
+        <div class="fdc-timeline-step">
+          <div class="fdc-timeline-dot">
+            <svg viewBox="0 0 24 24"><path d="M3 18 Q12 8 21 18"/><path d="M3 18h18"/><circle cx="12" cy="11" r="2"/></svg>
+          </div>
+          <div class="fdc-timeline-content">
+            <div class="fdc-timeline-time">14h</div>
+            <div class="fdc-timeline-title">Ouverture au public</div>
+            <p class="fdc-timeline-text">Vos créations sont présentées, proches et voisins viennent admirer.</p>
+          </div>
+        </div>
+
+        <div class="fdc-timeline-step">
+          <div class="fdc-timeline-dot">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="5"/><path d="M7 13h10"/><path d="M12 8V4"/><path d="M10 4h4"/></svg>
+          </div>
+          <div class="fdc-timeline-content">
+            <div class="fdc-timeline-time">15h — 16h30</div>
+            <div class="fdc-timeline-title">Dégustation du jury</div>
+            <p class="fdc-timeline-text">Trois gourmands évaluent sur le goût, la présentation et l'originalité.</p>
+          </div>
+        </div>
+
+        <div class="fdc-timeline-step">
+          <div class="fdc-timeline-dot fdc-highlight">
+            <svg viewBox="0 0 24 24"><path d="M12 3 L14 9 L20 9.5 L15.5 13.5 L17 19.5 L12 16.5 L7 19.5 L8.5 13.5 L4 9.5 L10 9 Z" fill="#1F2E3F" stroke="none"/></svg>
+          </div>
+          <div class="fdc-timeline-content">
+            <div class="fdc-timeline-time">17h30</div>
+            <div class="fdc-timeline-title">Remise des prix</div>
+            <p class="fdc-timeline-text">Annonce des gagnants des deux catégories et verre de l'amitié.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= PARTICIPER ============================= -->
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-participer">
+        <div class="fdc-participer-left">
+          <span class="fdc-section-num">Section 03</span>
+          <h2 class="fdc-h2" style="margin-top: 12px; margin-bottom: 32px;">Qui peut participer</h2>
+          <p class="fdc-lede">Vous aimez la pâtisserie, vous la pratiquez en amateur, et vous avez envie de vous tester dans un cadre convivial. Aucun diplôme ni expérience de concours demandés.</p>
+          <div class="fdc-participer-badges">
+            <span class="fdc-badge fdc-badge-jaune">Adultes · 16 ans et +</span>
+            <span class="fdc-badge fdc-badge-vert">Juniors · 10 à 15 ans, accord parental</span>
+          </div>
+        </div>
+
+        <div class="fdc-participer-right">
+          <h3 class="fdc-h3">Les règles à connaître</h3>
+          <ol class="fdc-rules">
+            <li>
+              <span class="fdc-rules-num">i</span>
+              <span>Votre création doit être <strong>faite maison</strong>, préparée par vous (ou vous et votre enfant pour les Juniors).</span>
+            </li>
+            <li>
+              <span class="fdc-rules-num">ii</span>
+              <span>Vous apportez votre pâtisserie le jour J avec la <strong>liste des allergènes</strong> (gluten, lactose, fruits à coque, œuf).</span>
+            </li>
+            <li>
+              <span class="fdc-rules-num">iii</span>
+              <span>En cas de désistement le jour J, la place est perdue et ne peut pas être reportée. Prévenez-nous en avance si vous ne pouvez pas venir.</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= LOTS ============================= -->
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-section-head">
+        <span class="fdc-section-num">Section 04</span>
+        <h2 class="fdc-h2">Ce qui vous attend sur le podium</h2>
+      </div>
+
+      <div class="fdc-lots">
+        <div class="fdc-lots-col">
+          <h3 class="fdc-lots-cat">Adultes <span class="fdc-lots-cat-badge">16 ans et +</span></h3>
+          <ul class="fdc-prix-list">
+            <li class="fdc-prix">
+              <span class="fdc-prix-rank">1<sup style="font-size:0.5em;">er</sup></span>
+              <span class="fdc-prix-text">Un panier gourmand composé des meilleures créations du Four du Canal (valeur environ 100 €) et un bon cadeau de 50 € à utiliser en boutique.</span>
+            </li>
+            <li class="fdc-prix">
+              <span class="fdc-prix-rank">2<sup style="font-size:0.5em;">e</sup></span>
+              <span class="fdc-prix-text">Un coffret gourmand (valeur environ 50 €).</span>
+            </li>
+            <li class="fdc-prix">
+              <span class="fdc-prix-rank">3<sup style="font-size:0.5em;">e</sup></span>
+              <span class="fdc-prix-text">Une carte cadeau de 25 € à utiliser en boutique.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="fdc-lots-col fdc-juniors">
+          <h3 class="fdc-lots-cat">Juniors <span class="fdc-lots-cat-badge">10-15 ans</span></h3>
+          <p class="fdc-text" style="margin-bottom: 20px;">Mêmes trois places, mêmes lots, adaptés à la catégorie. Parce qu'un pâtissier de 12 ans mérite exactement la même reconnaissance qu'un adulte.</p>
+          <ul class="fdc-prix-list">
+            <li class="fdc-prix">
+              <span class="fdc-prix-rank">1<sup style="font-size:0.5em;">er</sup></span>
+              <span class="fdc-prix-text">Panier gourmand junior et bon cadeau 50 €.</span>
+            </li>
+            <li class="fdc-prix">
+              <span class="fdc-prix-rank">2<sup style="font-size:0.5em;">e</sup></span>
+              <span class="fdc-prix-text">Coffret gourmand junior.</span>
+            </li>
+            <li class="fdc-prix">
+              <span class="fdc-prix-rank">3<sup style="font-size:0.5em;">e</sup></span>
+              <span class="fdc-prix-text">Carte cadeau 25 €.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="fdc-lots-note">
+          <div class="fdc-lots-note-icon" aria-hidden="true">✺</div>
+          <div class="fdc-lots-note-text">
+            <h4>Et pour tous les participants</h4>
+            <p>Chaque personne qui se lance repartira avec une douceur maison du Four du Canal. Parce qu'oser participer, c'est déjà beaucoup.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= JURY ============================= -->
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-section-head">
+        <span class="fdc-section-num">Section 05</span>
+        <h2 class="fdc-h2">Le jury</h2>
+      </div>
+
+      <blockquote class="fdc-quote">
+        <p>Pas de piège, pas de grille cachée. Juste trois gourmands qui prennent le temps de goûter votre création en toute honnêteté.</p>
+        <cite>— La promesse du jury</cite>
+      </blockquote>
+
+      <div class="fdc-jury-grid">
+        <div class="fdc-jure">
+          <span class="fdc-jure-tag">Métier</span>
+          <strong>La chef pâtissière du Four du Canal</strong>
+          <p>Pour l'œil du métier.</p>
+        </div>
+        <div class="fdc-jure">
+          <span class="fdc-jure-tag">Habitué</span>
+          <strong>Un client fidèle</strong>
+          <p>Tiré au sort parmi les habitués, pour la voix des vrais mangeurs.</p>
+        </div>
+        <div class="fdc-jure">
+          <span class="fdc-jure-tag">Invitée</span>
+          <strong>Une personnalité locale</strong>
+          <p>Invitée pour un regard extérieur et bienveillant.</p>
+        </div>
+      </div>
+
+      <div class="fdc-criteres">
+        <div class="fdc-critere">
+          <div class="fdc-critere-num">10</div>
+          <div class="fdc-critere-name">Goût</div>
+          <p class="fdc-critere-text">Parce que c'est quand même la base.</p>
+        </div>
+        <div class="fdc-critere">
+          <div class="fdc-critere-num">10</div>
+          <div class="fdc-critere-name">Présentation</div>
+          <p class="fdc-critere-text">Parce qu'on mange d'abord avec les yeux.</p>
+        </div>
+        <div class="fdc-critere">
+          <div class="fdc-critere-num">10</div>
+          <div class="fdc-critere-name">Originalité</div>
+          <p class="fdc-critere-text">Parce qu'une idée bien amenée vaut toutes les techniques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= FAQ ============================= -->
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-section-head">
+        <span class="fdc-section-num">Section 06</span>
+        <h2 class="fdc-h2">Les réponses à vos questions</h2>
+      </div>
+
+      <div class="fdc-faq">
+        <details>
+          <summary>Combien ça coûte ?</summary>
+          <p class="fdc-faq-answer">Zéro euro. L'inscription et la participation sont entièrement gratuites, c'est notre façon de célébrer les amateurs de pâtisserie du coin.</p>
+        </details>
+        <details>
+          <summary>Et si je n'ai jamais fait de concours ?</summary>
+          <p class="fdc-faq-answer">C'est le moment. Le concours est pensé pour des amateurs, pas pour des professionnels. On est là pour partager un bon moment, pas pour vous juger sans pitié.</p>
+        </details>
+        <details>
+          <summary>Puis-je inscrire mon enfant ?</summary>
+          <p class="fdc-faq-answer">Oui, dès 10 ans, dans la catégorie Juniors, avec accord parental à l'inscription. Vous pouvez tout à fait l'inscrire dans la catégorie Juniors pendant que vous participez vous-même dans la catégorie Adultes.</p>
+        </details>
+        <details>
+          <summary>Que devient ma pâtisserie après la dégustation du jury ?</summary>
+          <p class="fdc-faq-answer">Les créations restent exposées jusqu'à la remise des prix à 17h30. Ensuite, elles sont partagées entre les participants et le public présent, dans un esprit buffet. Vous pouvez aussi en reprendre une part si vous le souhaitez.</p>
+        </details>
+        <details>
+          <summary>Puis-je venir accompagné ?</summary>
+          <p class="fdc-faq-answer">Absolument. Vos proches, vos voisins, vos enfants, tous sont les bienvenus pour venir admirer les créations et goûter à l'ambiance du jour.</p>
+        </details>
+        <details>
+          <summary>Que se passe-t-il s'il y a trop d'inscriptions ?</summary>
+          <p class="fdc-faq-answer">Nous retenons 20 participants maximum au total, toutes catégories confondues. Si nous recevons plus de candidatures, nous les traitons dans l'ordre d'arrivée. Les personnes non retenues sont prévenues dès la clôture des inscriptions et placées sur liste d'attente.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= FORMULAIRE ============================= -->
+  <section class="fdc-form" id="inscription">
+    <div class="fdc-form-sun" aria-hidden="true"></div>
+    <div class="fdc-container fdc-form-inner">
+      <span class="fdc-section-num">Section 07</span>
+      <h2 class="fdc-h2" style="margin-top: 12px;">Prêt à vous inscrire ?</h2>
+      <p class="fdc-lede fdc-form-lede">
+        Deux minutes pour remplir le formulaire, et votre place est réservée. On vous envoie tout de suite un email de confirmation, puis le règlement complet et les infos pratiques quelques jours avant l'événement.
+      </p>
+      <div class="fdc-form-embed">
+        <iframe
+          src="https://tally.so/embed/FORM_ID_A_REMPLACER?hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          loading="lazy"
+          title="Formulaire d'inscription au concours amateur du Four du Canal">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="fdc-footer">
+    <div class="fdc-footer-moon" aria-hidden="true"></div>
+    <div class="fdc-container fdc-footer-inner">
+      <div class="fdc-footer-top">
+        <div class="fdc-footer-brand">
+          <span class="fdc-tampon fdc-footer-tampon" aria-hidden="true">F.C.</span>
+          <div>
+            <h3>Le Four du Canal</h3>
+            <p>3 rue du Canal, 64210 Bidart<br>05 59 00 00 00<br><a href="mailto:bonjour@lefourducanal.fr">bonjour@lefourducanal.fr</a></p>
+          </div>
+        </div>
+
+        <div class="fdc-footer-col">
+          <h4>Horaires</h4>
+          <p>Du mardi au samedi<br>7h — 13h · 15h — 19h<br>Dimanche : 7h — 13h<br>Fermé le lundi</p>
+        </div>
+
+        <div class="fdc-footer-col">
+          <h4>Liens</h4>
+          <ul>
+            <li><a href="https://www.lefourducanal.fr">Site principal</a></li>
+            <li><a href="#">Règlement (PDF)</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="https://www.instagram.com/lefourducanal">Instagram</a> · <a href="https://www.facebook.com/lefourducanal">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fdc-footer-bottom">
+        © 2026 Le Four du Canal · Premier concours amateur de pâtisserie · Samedi 6 décembre 2026 · Bidart
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

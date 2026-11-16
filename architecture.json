@@ -1,0 +1,124 @@
+{
+ "titre": "Architecture globale – Le Four du Canal",
+ "utilisateurs": [
+  {
+   "id": "u1",
+   "nom": "Participant",
+   "role": "Utilisateur externe"
+  },
+  {
+   "id": "u2",
+   "nom": "Cheffe pâtissière",
+   "role": "Administratrice et jurée"
+  },
+  {
+   "id": "u3",
+   "nom": "Jurés",
+   "role": "Évaluateurs internes"
+  }
+ ],
+ "outils": [
+  {
+   "id": "interface",
+   "type": "interface",
+   "nom": "Softr",
+   "role": "Interface jury et classement",
+   "lignes": [
+    "Dashboard juré · Fiche notation",
+    "Classement temps réel (cheffe)"
+   ]
+  },
+  {
+   "id": "base",
+   "type": "base",
+   "nom": "Airtable",
+   "role": "Base de données et calculs",
+   "lignes": [
+    "*PARTICIPANT · JURE · NOTE",
+    "Total /30 et Note /90 auto"
+   ]
+  },
+  {
+   "id": "form",
+   "type": "formulaire",
+   "nom": "Tally",
+   "role": "Inscription publique",
+   "lignes": [
+    "Embarqué sur landing Netlify",
+    "Catégorie Adultes ou Juniors"
+   ]
+  },
+  {
+   "id": "auto",
+   "type": "automatisation",
+   "nom": "Airtable Automations",
+   "role": "Automatisations natives",
+   "automatisations": [
+    [
+     "Email de confirmation",
+     "à l'inscription"
+    ],
+    [
+     "Email de rappel",
+     "vendredi J-1 à 10 h"
+    ]
+   ]
+  }
+ ],
+ "services": [
+  {
+   "id": "s1",
+   "nom": "Gmail",
+   "role": "Email sortant",
+   "lignes": [
+    "Confirmation + rappel J-1"
+   ]
+  }
+ ],
+ "fleches": [
+  {
+   "de": "u1",
+   "vers": "form",
+   "libelle": "s'inscrit"
+  },
+  {
+   "de": "u2",
+   "vers": "interface",
+   "libelle": "pilote"
+  },
+  {
+   "de": "u3",
+   "vers": "interface",
+   "libelle": "notent"
+  },
+  {
+   "de": "interface",
+   "vers": "base",
+   "libelle": "lit et modifie"
+  },
+  {
+   "de": "form",
+   "vers": "base",
+   "libelle": "enregistre"
+  },
+  {
+   "de": "base",
+   "vers": "auto",
+   "libelle": "déclenche"
+  },
+  {
+   "de": "auto",
+   "vers": "s1",
+   "libelle": "envoie"
+  }
+ ],
+ "retours": [
+  {
+   "de": "s1",
+   "vers": [
+    "u1"
+   ],
+   "libelle": "emails reçus : confirmation inscription, rappel J-1"
+  }
+ ]
+}

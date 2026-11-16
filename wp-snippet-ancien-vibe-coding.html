@@ -1,0 +1,449 @@
+<!--
+  Le Four du Canal — Snippet WordPress
+  ====================================
+
+  À coller dans un bloc "HTML personnalisé" de l'éditeur Gutenberg
+  d'une page WordPress, ou dans un template "Blank Canvas" si le thème
+  en propose un.
+
+  Ne pas inclure dans le <head> global du thème. Tout tient dans ce bloc :
+  - La police Google (Fraunces + Inter) est chargée en haut du bloc
+  - Les styles sont scoped à .fdc-* (zéro collision avec le thème WP)
+  - La structure HTML est encapsulée dans <div class="fdc-root">
+  - Aucun JavaScript, l'iframe Tally gère seule l'interactivité
+
+  Avant collage :
+  1. Remplacer FORM_ID_A_REMPLACER par l'ID réel du formulaire Tally
+  2. Vérifier que le thème WP ne force pas de max-width inférieur à 1120px
+     sur ses pages (sinon ajouter un template Full Width ou Blank Canvas)
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+.fdc-root {
+  --fdc-creme: #FEF6F0;
+  --fdc-lin: #F5E8DA;
+  --fdc-encre: #2E1A12;
+  --fdc-chocolat: #3D2814;
+  --fdc-brun: #7A5D45;
+  --fdc-pistache: #A5C293;
+  --fdc-framboise: #E86B7F;
+  --fdc-framboise-dark: #D04E64;
+  --fdc-font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --fdc-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--fdc-creme);
+  color: var(--fdc-chocolat);
+  font-family: var(--fdc-font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fdc-root *, .fdc-root *::before, .fdc-root *::after { box-sizing: border-box; }
+.fdc-root img { max-width: 100%; height: auto; display: block; }
+.fdc-root a { color: var(--fdc-framboise); text-decoration: none; transition: color .15s ease; }
+.fdc-root a:hover, .fdc-root a:focus-visible { color: var(--fdc-framboise-dark); text-decoration: underline; outline: none; }
+
+.fdc-container { max-width: 1120px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.fdc-section { padding-block: 96px; }
+.fdc-section-rule { width: 64px; height: 1px; background: var(--fdc-pistache); margin-bottom: 20px; }
+.fdc-section-rule.fdc-pop { background: var(--fdc-framboise); height: 2px; }
+
+.fdc-h2 { font-family: var(--fdc-font-display); font-size: clamp(26px, 3.5vw, 40px); font-weight: 500; line-height: 1.1; font-variation-settings: "opsz" 40, "SOFT" 20; letter-spacing: -0.01em; margin: 0 0 40px; text-wrap: balance; max-width: 22ch; }
+.fdc-h3 { font-family: var(--fdc-font-display); font-size: 22px; font-weight: 600; line-height: 1.2; margin: 0 0 12px; font-variation-settings: "opsz" 24, "SOFT" 20; }
+.fdc-h3.fdc-italic { font-weight: 400; font-style: italic; color: var(--fdc-brun); }
+
+.fdc-body { font-size: 17px; line-height: 1.6; margin: 0 0 16px; max-width: 62ch; }
+.fdc-body em { font-family: var(--fdc-font-display); font-style: italic; font-weight: 500; font-variation-settings: "opsz" 24; }
+.fdc-body-small { font-size: 15px; line-height: 1.55; color: var(--fdc-brun); }
+
+.fdc-btn-primary { display: inline-block; background: var(--fdc-framboise); color: var(--fdc-creme); padding: 14px 28px; border-radius: 6px; font-family: var(--fdc-font-body); font-size: 15px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; border: none; cursor: pointer; transition: background .15s ease, transform .15s ease; }
+.fdc-btn-primary:hover, .fdc-btn-primary:focus-visible { background: var(--fdc-framboise-dark); color: var(--fdc-creme); text-decoration: none; transform: translateY(-1px); outline: none; }
+
+.fdc-tampon { width: 64px; height: 64px; border-radius: 50%; border: 1.5px solid var(--fdc-pistache); display: inline-flex; align-items: center; justify-content: center; font-family: var(--fdc-font-display); font-style: italic; font-size: 18px; font-weight: 500; color: var(--fdc-pistache); background: var(--fdc-creme); letter-spacing: 0.02em; position: relative; flex-shrink: 0; }
+.fdc-tampon::after { content: ""; position: absolute; top: 12px; right: 15px; width: 4px; height: 4px; border-radius: 50%; background: var(--fdc-framboise); }
+
+.fdc-hero { padding-block: 80px 96px; }
+.fdc-hero-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; min-width: 0; }
+.fdc-hero-text { min-width: 0; }
+.fdc-hero-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.fdc-hero-meta-rule { width: 32px; height: 2px; background: var(--fdc-framboise); }
+.fdc-hero-meta-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fdc-pistache); font-weight: 500; }
+.fdc-hero-title { font-family: var(--fdc-font-display); font-size: clamp(38px, 6vw, 68px); font-weight: 500; line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 24px; font-variation-settings: "opsz" 72, "SOFT" 30; text-wrap: balance; color: var(--fdc-chocolat); }
+.fdc-hero-title em { font-style: italic; color: var(--fdc-framboise); }
+.fdc-hero-subtitle { font-size: 18px; line-height: 1.55; color: var(--fdc-brun); max-width: 48ch; margin: 0 0 32px; }
+.fdc-hero-cta-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.fdc-hero-visual { aspect-ratio: 1 / 1; background: var(--fdc-lin); border-radius: 6px; display: flex; align-items: center; justify-content: center; position: relative; max-width: 100%; }
+.fdc-hero-visual svg { width: 78%; height: 78%; }
+.fdc-hero-visual-caption { position: absolute; bottom: 14px; left: 18px; font-size: 11px; color: var(--fdc-brun); text-transform: uppercase; letter-spacing: 0.12em; }
+
+.fdc-section-alt { background: var(--fdc-lin); }
+
+.fdc-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
+.fdc-point { min-width: 0; position: relative; padding-top: 24px; }
+.fdc-point::before { content: ""; position: absolute; top: 0; left: 0; width: 40px; height: 1px; background: var(--fdc-pistache); }
+.fdc-point-label { font-family: var(--fdc-font-body); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fdc-pistache); margin-bottom: 10px; font-weight: 500; }
+.fdc-point-title { font-family: var(--fdc-font-display); font-size: 22px; font-weight: 500; margin: 0 0 12px; font-variation-settings: "opsz" 24, "SOFT" 20; }
+.fdc-point-text { font-size: 16px; line-height: 1.55; color: var(--fdc-brun); margin: 0; }
+.fdc-point-text ul { padding-left: 20px; margin: 8px 0 0; }
+.fdc-point-text li { margin-bottom: 4px; }
+
+.fdc-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; }
+.fdc-step { min-width: 0; }
+.fdc-step-icon { width: 44px; height: 44px; margin-bottom: 20px; color: var(--fdc-pistache); }
+.fdc-step-icon.fdc-pop { color: var(--fdc-framboise); }
+.fdc-step-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.fdc-step-time { font-family: var(--fdc-font-body); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fdc-pistache); font-weight: 500; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+.fdc-step-title { font-family: var(--fdc-font-display); font-size: 20px; font-weight: 500; margin: 0 0 10px; font-variation-settings: "opsz" 24, "SOFT" 20; line-height: 1.2; }
+.fdc-step-text { font-size: 15px; line-height: 1.55; color: var(--fdc-brun); margin: 0; }
+
+.fdc-two-col { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: start; }
+@media (max-width: 760px) { .fdc-two-col { grid-template-columns: 1fr; gap: 32px; } }
+.fdc-participer-left { min-width: 0; }
+.fdc-participer-left p { max-width: 36ch; }
+.fdc-categories { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+@media (max-width: 500px) { .fdc-categories { grid-template-columns: 1fr; } }
+.fdc-category { background: var(--fdc-lin); padding: 24px; border-radius: 6px; position: relative; }
+.fdc-category::before { content: ""; position: absolute; top: 14px; left: 14px; width: 32px; height: 1px; background: var(--fdc-pistache); }
+.fdc-category-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fdc-pistache); font-weight: 500; margin: 20px 0 6px; }
+.fdc-category-title { font-family: var(--fdc-font-display); font-size: 22px; font-weight: 500; margin: 0 0 6px; font-variation-settings: "opsz" 24, "SOFT" 20; }
+.fdc-category-text { font-size: 14px; color: var(--fdc-brun); margin: 0; }
+
+.fdc-rules-list { padding-left: 0; list-style: none; margin: 0; }
+.fdc-rules-list li { padding: 14px 0 14px 28px; border-top: 1px solid var(--fdc-lin); position: relative; font-size: 15px; line-height: 1.55; color: var(--fdc-chocolat); }
+.fdc-rules-list li:first-child { border-top: none; }
+.fdc-rules-list li::before { content: "—"; position: absolute; left: 0; color: var(--fdc-pistache); }
+.fdc-rules-list li strong { font-weight: 600; }
+
+.fdc-lots-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+@media (max-width: 760px) { .fdc-lots-grid { grid-template-columns: 1fr; } }
+.fdc-lots-col { min-width: 0; }
+.fdc-lots-cat-title { font-family: var(--fdc-font-display); font-style: italic; font-size: 24px; font-weight: 400; color: var(--fdc-brun); margin: 0 0 24px; font-variation-settings: "opsz" 24; }
+.fdc-prix { padding: 20px 0; border-top: 1px solid var(--fdc-lin); display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start; }
+.fdc-prix:first-of-type { border-top: none; padding-top: 0; }
+.fdc-prix-rank { font-family: var(--fdc-font-display); font-size: 22px; font-weight: 500; color: var(--fdc-pistache); font-variation-settings: "opsz" 24, "SOFT" 20; line-height: 1.1; padding-top: 2px; }
+.fdc-prix-text { font-size: 16px; line-height: 1.55; color: var(--fdc-chocolat); }
+.fdc-lots-note { margin-top: 32px; padding: 24px; border-radius: 6px; background: var(--fdc-lin); position: relative; }
+.fdc-lots-note::before { content: ""; position: absolute; top: 14px; left: 14px; width: 32px; height: 2px; background: var(--fdc-framboise); }
+.fdc-lots-note-title { font-family: var(--fdc-font-display); font-size: 18px; font-weight: 600; margin: 20px 0 8px; font-variation-settings: "opsz" 24, "SOFT" 20; }
+.fdc-lots-note p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--fdc-brun); }
+
+.fdc-jury-block { margin-bottom: 48px; }
+.fdc-jury-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.fdc-jure { min-width: 0; padding-top: 16px; position: relative; }
+.fdc-jure::before { content: ""; position: absolute; top: 0; left: 0; width: 32px; height: 1px; background: var(--fdc-pistache); }
+.fdc-jure strong { font-family: var(--fdc-font-display); font-size: 17px; font-weight: 600; display: block; margin-bottom: 8px; font-variation-settings: "opsz" 24, "SOFT" 20; color: var(--fdc-chocolat); }
+.fdc-jure p { font-size: 14px; line-height: 1.55; color: var(--fdc-brun); margin: 0; }
+.fdc-criteres { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+.fdc-critere { min-width: 0; }
+.fdc-critere-name { font-family: var(--fdc-font-display); font-size: 20px; font-weight: 500; margin: 0 0 8px; font-variation-settings: "opsz" 24, "SOFT" 20; }
+.fdc-critere-name em { font-style: italic; color: var(--fdc-framboise); font-weight: 500; }
+.fdc-critere-text { font-size: 14px; line-height: 1.55; color: var(--fdc-brun); margin: 0; }
+.fdc-jury-closing { margin-top: 40px; font-size: 15px; line-height: 1.55; color: var(--fdc-brun); max-width: 62ch; }
+
+.fdc-faq { max-width: 780px; }
+.fdc-faq details { border-top: 1px solid var(--fdc-lin); padding: 24px 0; }
+.fdc-faq details:last-of-type { border-bottom: 1px solid var(--fdc-lin); }
+.fdc-faq summary { font-family: var(--fdc-font-display); font-size: 19px; font-weight: 500; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; color: var(--fdc-chocolat); font-variation-settings: "opsz" 24, "SOFT" 20; }
+.fdc-faq summary::-webkit-details-marker { display: none; }
+.fdc-faq summary::after { content: "+"; font-family: var(--fdc-font-body); font-size: 24px; color: var(--fdc-pistache); transition: transform .2s ease; line-height: 1; flex-shrink: 0; font-weight: 400; }
+.fdc-faq details[open] summary::after { content: "−"; }
+.fdc-faq-answer { margin: 16px 0 0; font-size: 16px; line-height: 1.6; color: var(--fdc-brun); max-width: 62ch; }
+
+.fdc-form { background: var(--fdc-lin); }
+.fdc-form-intro { max-width: 60ch; margin-bottom: 40px; }
+.fdc-form-embed { background: var(--fdc-creme); border-radius: 6px; padding: 24px; min-height: 480px; }
+.fdc-form-embed iframe { width: 100%; min-height: 720px; border: none; display: block; }
+.fdc-form-fallback { text-align: center; padding: 48px 24px; color: var(--fdc-brun); font-size: 15px; }
+
+.fdc-footer { background: var(--fdc-encre); color: var(--fdc-creme); padding-block: 64px; }
+.fdc-footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 48px; }
+@media (max-width: 760px) { .fdc-footer-grid { grid-template-columns: 1fr; gap: 32px; } }
+.fdc-footer h4 { font-family: var(--fdc-font-display); font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fdc-framboise); margin: 0 0 16px; }
+.fdc-footer p, .fdc-footer li, .fdc-footer a { font-size: 15px; line-height: 1.6; color: #D8CFBE; }
+.fdc-footer a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(216, 207, 190, 0.3); }
+.fdc-footer a:hover, .fdc-footer a:focus-visible { color: var(--fdc-creme); text-decoration-color: var(--fdc-framboise); }
+.fdc-footer-brand { display: flex; align-items: flex-start; gap: 20px; }
+.fdc-footer-tampon { border-color: var(--fdc-framboise); color: var(--fdc-framboise); background: transparent; }
+.fdc-footer-tampon::after { background: var(--fdc-framboise); }
+.fdc-footer-brand-text h3 { font-family: var(--fdc-font-display); font-size: 22px; font-weight: 500; margin: 0 0 8px; color: var(--fdc-creme); font-variation-settings: "opsz" 24, "SOFT" 20; }
+.fdc-footer-brand-text p { margin: 0; }
+.fdc-footer ul { list-style: none; padding: 0; margin: 0; }
+.fdc-footer li { margin-bottom: 8px; }
+.fdc-footer-bottom { border-top: 1px solid rgba(216, 207, 190, 0.15); margin-top: 48px; padding-top: 24px; font-size: 13px; color: #A89D89; text-align: center; letter-spacing: 0.02em; }
+
+.fdc-root :focus-visible { outline: 2px solid var(--fdc-pistache); outline-offset: 3px; border-radius: 3px; }
+
+@media (max-width: 760px) {
+  .fdc-section { padding-block: 64px; }
+  .fdc-hero { padding-block: 56px 72px; }
+  .fdc-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .fdc-hero-visual { max-width: 400px; margin: 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fdc-root *, .fdc-root *::before, .fdc-root *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+
+<div class="fdc-root">
+
+  <header class="fdc-hero">
+    <div class="fdc-container fdc-hero-inner">
+      <div class="fdc-hero-text">
+        <div class="fdc-hero-meta">
+          <span class="fdc-hero-meta-rule" aria-hidden="true"></span>
+          <span class="fdc-hero-meta-label">Samedi 6 décembre · Bidart</span>
+        </div>
+        <h1 class="fdc-hero-title">Votre pâtisserie mérite d'être <em>goûtée</em></h1>
+        <p class="fdc-hero-subtitle">Le Four du Canal lance son premier concours amateur, samedi 6 décembre à Bidart. Jury gourmand, lots à gagner, pas besoin d'être pro. Inscription gratuite en 2 minutes.</p>
+        <div class="fdc-hero-cta-row">
+          <a class="fdc-btn-primary" href="#inscription">Je m'inscris</a>
+          <div class="fdc-tampon" aria-label="Monogramme Le Four du Canal">F.C.</div>
+        </div>
+      </div>
+      <div class="fdc-hero-visual" aria-label="Illustration pâtissière du concours">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M18 22 L19.5 25 L22.5 25.5 L20 27.5 L21 30.5 L18 29 L15 30.5 L16 27.5 L13.5 25.5 L16.5 25 Z" fill="#E86B7F"/>
+          <g transform="translate(100, 18)"><path d="M0 -3 L1 -1 L3 -0.5 L1.2 1 L1.8 3 L0 2 L-1.8 3 L-1.2 1 L-3 -0.5 L-1 -1 Z" fill="#A5C293"/></g>
+          <circle cx="22" cy="56" r="1.8" fill="#E86B7F"/>
+          <circle cx="98" cy="62" r="1.5" fill="#A5C293"/>
+          <path d="M100 48 Q102 46 104 48 Q102 50 100 48 Z" fill="#E86B7F"/>
+          <circle cx="16" cy="92" r="1.2" fill="#E86B7F"/>
+          <circle cx="22" cy="95" r="1.6" fill="#A5C293"/>
+          <path d="M103 95 L105 92 L107 95 L105 98 Z" fill="#A5C293"/>
+          <ellipse cx="60" cy="110" rx="34" ry="3.2" fill="#A5C293"/>
+          <path d="M54 100 L50 107 L70 107 L66 100 Z" fill="#A5C293"/>
+          <rect x="52" y="98" width="16" height="3" rx="1.5" fill="#A5C293"/>
+          <rect x="30" y="75" width="60" height="25" rx="3" fill="#FEF6F0" stroke="#3D2814" stroke-width="1.5"/>
+          <path d="M30 82 Q36 80 42 82 T54 82 T66 82 T78 82 T86 82 L90 82" fill="none" stroke="#E86B7F" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="40" cy="91" r="1.3" fill="#E86B7F"/>
+          <circle cx="52" cy="93" r="1.3" fill="#A5C293"/>
+          <circle cx="64" cy="91" r="1.3" fill="#E86B7F"/>
+          <circle cx="76" cy="93" r="1.3" fill="#A5C293"/>
+          <rect x="40" y="52" width="40" height="23" rx="3" fill="#F5E8DA" stroke="#3D2814" stroke-width="1.5"/>
+          <path d="M40 59 Q46 57 52 59 T64 59 T76 59 L80 59" fill="none" stroke="#A5C293" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="50" cy="68" r="1.2" fill="#E86B7F"/>
+          <circle cx="60" cy="70" r="1.2" fill="#A5C293"/>
+          <circle cx="70" cy="68" r="1.2" fill="#E86B7F"/>
+          <rect x="48" y="32" width="24" height="20" rx="2.5" fill="#FEF6F0" stroke="#3D2814" stroke-width="1.5"/>
+          <path d="M48 39 Q54 37 60 39 Q66 41 72 39" fill="none" stroke="#E86B7F" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="60" cy="27" r="4.5" fill="#E86B7F" stroke="#3D2814" stroke-width="1.5"/>
+          <circle cx="58.5" cy="25.5" r="1.3" fill="#FEF6F0" opacity="0.7"/>
+          <path d="M60 22.5 Q63 18 67 15" fill="none" stroke="#3D2814" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M67 15 Q70 13 72 16 Q70 18 67 15 Z" fill="#A5C293"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section class="fdc-section fdc-section-alt">
+    <div class="fdc-container">
+      <div class="fdc-section-rule" aria-hidden="true"></div>
+      <h2 class="fdc-h2">Trois choses à savoir avant de vous lancer</h2>
+      <div class="fdc-points">
+        <article class="fdc-point">
+          <div class="fdc-point-label">Quand et où</div>
+          <h3 class="fdc-point-title">Samedi 6 décembre</h3>
+          <p class="fdc-point-text">De 14h à 18h, dans la boutique du Four du Canal, rue du Canal à Bidart.</p>
+        </article>
+        <article class="fdc-point">
+          <div class="fdc-point-label">Le thème</div>
+          <h3 class="fdc-point-title">Pâtisserie de fin d'année</h3>
+          <p class="fdc-point-text">Libre dans la recette, libre dans l'inspiration. Format pour 6 personnes minimum, ou 6 pièces individuelles.</p>
+        </article>
+        <article class="fdc-point">
+          <div class="fdc-point-label">Pour qui</div>
+          <h3 class="fdc-point-title">Deux catégories</h3>
+          <div class="fdc-point-text">
+            <ul>
+              <li>Adultes (16 ans et plus)</li>
+              <li>Juniors (10 à 15 ans, avec accord parental)</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-section-rule fdc-pop" aria-hidden="true"></div>
+      <h2 class="fdc-h2">Le déroulé de la journée</h2>
+      <div class="fdc-steps">
+        <article class="fdc-step">
+          <div class="fdc-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="8" y="16" width="32" height="24" rx="2"/><path d="M8 16l5-8h22l5 8"/><path d="M20 26h8"/></svg>
+          </div>
+          <div class="fdc-step-time">10h — 12h</div>
+          <h3 class="fdc-step-title">Vous déposez votre création</h3>
+          <p class="fdc-step-text">Vous apportez votre pâtisserie en boutique, avec la liste des allergènes. On vous remet votre numéro de participant.</p>
+        </article>
+        <article class="fdc-step">
+          <div class="fdc-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M8 36 Q24 20 40 36"/><circle cx="24" cy="22" r="4"/><path d="M8 36 L40 36"/><path d="M12 42 L36 42"/></svg>
+          </div>
+          <div class="fdc-step-time">14h</div>
+          <h3 class="fdc-step-title">Ouverture au public</h3>
+          <p class="fdc-step-text">Vos créations sont présentées dans la boutique. Vos proches et les voisins peuvent venir admirer ce que vous avez préparé.</p>
+        </article>
+        <article class="fdc-step">
+          <div class="fdc-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="26" r="10"/><path d="M14 26h20"/><path d="M24 16v-6"/><path d="M19 10h10"/></svg>
+          </div>
+          <div class="fdc-step-time">15h — 16h30</div>
+          <h3 class="fdc-step-title">Le jury déguste et délibère</h3>
+          <p class="fdc-step-text">Trois jurés gourmands évaluent chaque création sur le goût, la présentation et l'originalité.</p>
+        </article>
+        <article class="fdc-step">
+          <div class="fdc-step-icon fdc-pop" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M24 10l3.5 7 7.5 1-5.5 5.5 1.5 7.5L24 27.5 17 31l1.5-7.5L13 18l7.5-1L24 10z"/></svg>
+          </div>
+          <div class="fdc-step-time">17h30</div>
+          <h3 class="fdc-step-title">Remise des prix</h3>
+          <p class="fdc-step-text">Annonce des gagnants des deux catégories, remise des paniers gourmands et verre de l'amitié.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdc-section fdc-section-alt">
+    <div class="fdc-container">
+      <div class="fdc-section-rule" aria-hidden="true"></div>
+      <h2 class="fdc-h2">Qui peut participer</h2>
+      <div class="fdc-two-col">
+        <div class="fdc-participer-left">
+          <h3 class="fdc-h3 fdc-italic">Vous êtes le bienvenu si…</h3>
+          <p class="fdc-body">Vous aimez la pâtisserie, vous la pratiquez en <em>amateur</em>, et vous avez envie de vous tester dans un cadre convivial. Aucun diplôme ni expérience de concours demandés.</p>
+          <div class="fdc-categories">
+            <div class="fdc-category"><div class="fdc-category-label">Catégorie</div><h4 class="fdc-category-title">Adultes</h4><p class="fdc-category-text">À partir de 16 ans</p></div>
+            <div class="fdc-category"><div class="fdc-category-label">Catégorie</div><h4 class="fdc-category-title">Juniors</h4><p class="fdc-category-text">De 10 à 15 ans, avec accord parental</p></div>
+          </div>
+          <p class="fdc-body-small" style="margin-top: 20px;">Chaque catégorie a son propre classement, son propre jury et ses propres lots.</p>
+        </div>
+        <div>
+          <h3 class="fdc-h3 fdc-italic">Les règles à connaître</h3>
+          <ul class="fdc-rules-list">
+            <li>Votre création doit être <strong>faite maison</strong>, préparée par vous (ou vous et votre enfant pour les Juniors).</li>
+            <li>Vous apportez votre pâtisserie le jour J avec la <strong>liste des allergènes</strong> présents (gluten, lactose, fruits à coque, œuf).</li>
+            <li>En cas de désistement le jour J, la place est perdue et ne peut pas être reportée. Prévenez-nous en avance si vous ne pouvez pas venir.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-section-rule" aria-hidden="true"></div>
+      <h2 class="fdc-h2">Ce qui vous attend sur le podium</h2>
+      <div class="fdc-lots-grid">
+        <div class="fdc-lots-col">
+          <h3 class="fdc-lots-cat-title">Catégorie Adultes</h3>
+          <div class="fdc-prix"><div class="fdc-prix-rank">1<sup>er</sup></div><div class="fdc-prix-text">Un panier gourmand composé des meilleures créations du Four du Canal (valeur environ 100 €) et un bon cadeau de 50 € à utiliser en boutique.</div></div>
+          <div class="fdc-prix"><div class="fdc-prix-rank">2<sup>e</sup></div><div class="fdc-prix-text">Un coffret gourmand (valeur environ 50 €).</div></div>
+          <div class="fdc-prix"><div class="fdc-prix-rank">3<sup>e</sup></div><div class="fdc-prix-text">Une carte cadeau de 25 € à utiliser en boutique.</div></div>
+        </div>
+        <div class="fdc-lots-col">
+          <h3 class="fdc-lots-cat-title">Catégorie Juniors</h3>
+          <p class="fdc-body-small" style="margin-bottom: 20px;">Mêmes trois places, mêmes lots, adaptés à la catégorie. Parce qu'un pâtissier de 12 ans mérite exactement la même reconnaissance qu'un adulte.</p>
+          <div class="fdc-prix"><div class="fdc-prix-rank">1<sup>er</sup></div><div class="fdc-prix-text">Panier gourmand junior + bon cadeau 50 €.</div></div>
+          <div class="fdc-prix"><div class="fdc-prix-rank">2<sup>e</sup></div><div class="fdc-prix-text">Coffret gourmand junior.</div></div>
+          <div class="fdc-prix"><div class="fdc-prix-rank">3<sup>e</sup></div><div class="fdc-prix-text">Carte cadeau 25 €.</div></div>
+        </div>
+      </div>
+      <div class="fdc-lots-note">
+        <h4 class="fdc-lots-note-title">Pour tous les participants</h4>
+        <p>Chaque personne qui se lance repartira avec une douceur maison du Four du Canal. Parce qu'oser participer, c'est déjà beaucoup.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdc-section fdc-section-alt">
+    <div class="fdc-container">
+      <div class="fdc-section-rule" aria-hidden="true"></div>
+      <h2 class="fdc-h2">Le jury</h2>
+      <div class="fdc-jury-block">
+        <h3 class="fdc-h3 fdc-italic">Trois jurés, trois regards complémentaires</h3>
+        <div class="fdc-jury-list">
+          <div class="fdc-jure"><strong>La chef pâtissière du Four du Canal</strong><p>Pour l'œil du métier.</p></div>
+          <div class="fdc-jure"><strong>Un client fidèle</strong><p>Tiré au sort parmi les habitués, pour la voix des vrais mangeurs.</p></div>
+          <div class="fdc-jure"><strong>Une personnalité locale</strong><p>Invitée pour un regard extérieur et bienveillant.</p></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="fdc-h3 fdc-italic">Trois critères, à parts égales</h3>
+        <p class="fdc-body-small" style="margin-bottom: 24px;">Chaque création est notée sur 30 points, répartis en trois notes de 10.</p>
+        <div class="fdc-criteres">
+          <div class="fdc-critere"><div class="fdc-critere-name"><em>Goût</em></div><p class="fdc-critere-text">Parce que c'est quand même la base.</p></div>
+          <div class="fdc-critere"><div class="fdc-critere-name"><em>Présentation</em></div><p class="fdc-critere-text">Parce qu'on mange d'abord avec les yeux.</p></div>
+          <div class="fdc-critere"><div class="fdc-critere-name"><em>Originalité</em></div><p class="fdc-critere-text">Parce qu'une idée bien amenée vaut toutes les techniques.</p></div>
+        </div>
+        <p class="fdc-jury-closing">Pas de piège, pas de grille cachée. Juste trois gourmands qui prennent le temps de goûter votre création en toute honnêteté.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdc-section">
+    <div class="fdc-container">
+      <div class="fdc-section-rule" aria-hidden="true"></div>
+      <h2 class="fdc-h2">Les réponses à vos questions</h2>
+      <div class="fdc-faq">
+        <details><summary>Combien ça coûte ?</summary><p class="fdc-faq-answer">Zéro euro. L'inscription et la participation sont entièrement gratuites, c'est notre façon de célébrer les amateurs de pâtisserie du coin.</p></details>
+        <details><summary>Et si je n'ai jamais fait de concours ?</summary><p class="fdc-faq-answer">C'est le moment. Le concours est pensé pour des amateurs, pas pour des professionnels. On est là pour partager un bon moment, pas pour vous juger sans pitié.</p></details>
+        <details><summary>Puis-je inscrire mon enfant ?</summary><p class="fdc-faq-answer">Oui, dès 10 ans, dans la catégorie Juniors, avec accord parental à l'inscription. Vous pouvez tout à fait l'inscrire dans la catégorie Juniors pendant que vous participez vous-même dans la catégorie Adultes.</p></details>
+        <details><summary>Que devient ma pâtisserie après la dégustation du jury ?</summary><p class="fdc-faq-answer">Les créations restent exposées jusqu'à la remise des prix à 17h30. Ensuite, elles sont partagées entre les participants et le public présent, dans un esprit buffet. Vous pouvez aussi en reprendre une part si vous le souhaitez.</p></details>
+        <details><summary>Puis-je venir accompagné ?</summary><p class="fdc-faq-answer">Absolument. Vos proches, vos voisins, vos enfants, tous sont les bienvenus pour venir admirer les créations et goûter à l'ambiance du jour.</p></details>
+        <details><summary>Que se passe-t-il s'il y a trop d'inscriptions ?</summary><p class="fdc-faq-answer">Nous retenons 20 participants maximum au total, toutes catégories confondues. Si nous recevons plus de candidatures, nous les traitons dans l'ordre d'arrivée. Les personnes non retenues sont prévenues dès la clôture des inscriptions et placées sur liste d'attente.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdc-section fdc-form" id="inscription">
+    <div class="fdc-container">
+      <div class="fdc-section-rule fdc-pop" aria-hidden="true"></div>
+      <h2 class="fdc-h2">Prêt à vous inscrire ?</h2>
+      <p class="fdc-body fdc-form-intro">Deux minutes pour remplir le formulaire, et votre place est réservée. On vous envoie tout de suite un email de confirmation, puis le règlement complet et les infos pratiques quelques jours avant l'événement.</p>
+      <div class="fdc-form-embed">
+        <iframe src="https://tally.so/embed/FORM_ID_A_REMPLACER?hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" title="Formulaire d'inscription au concours amateur du Four du Canal"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="fdc-footer">
+    <div class="fdc-container">
+      <div class="fdc-footer-grid">
+        <div>
+          <div class="fdc-footer-brand">
+            <div class="fdc-tampon fdc-footer-tampon" aria-hidden="true">F.C.</div>
+            <div class="fdc-footer-brand-text">
+              <h3>Le Four du Canal</h3>
+              <p>3 rue du Canal, 64210 Bidart<br>05 59 00 00 00<br><a href="mailto:bonjour@lefourducanal.fr">bonjour@lefourducanal.fr</a></p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>Horaires de la boutique</h4>
+          <p>Du mardi au samedi<br>7h à 13h · 15h à 19h<br>Dimanche : 7h à 13h<br>Fermé le lundi</p>
+        </div>
+        <div>
+          <h4>Liens utiles</h4>
+          <ul>
+            <li><a href="https://www.lefourducanal.fr">Site principal de la pâtisserie</a></li>
+            <li><a href="#">Règlement complet (PDF)</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="https://www.instagram.com/lefourducanal">Instagram</a> · <a href="https://www.facebook.com/lefourducanal">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fdc-footer-bottom">
+        © 2026 Le Four du Canal. Premier concours amateur de pâtisserie, samedi 6 décembre 2026 à Bidart.
+      </div>
+    </div>
+  </footer>
+
+</div>
